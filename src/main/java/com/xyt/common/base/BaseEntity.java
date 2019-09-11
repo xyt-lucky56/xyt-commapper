@@ -33,28 +33,28 @@ public class BaseEntity implements Serializable {
 	 */
 	public static final Integer VERSION_CODE = 1;
 
-	/** 主键id */
+/*	*//** 主键id *//*
 	@ApiModelProperty(value = "主键id")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	@OrderBy("DESC")
 	protected String id;
-	/** 是否有效1：有效0：无效 */
+	*//** 是否有效1：有效0：无效 *//*
 	@ApiModelProperty(value = "删除标识", hidden = true)
 	protected Integer valid;
-	/** 创建时间 */
+	*//** 创建时间 *//*
 	@ApiModelProperty(value = "创建时间", hidden = true)
 	@Column(name = "create_time")
 	protected Date createTime;
-	/**
+	*//**
 	 *
 	 * <pre>
 	 * 修改时设置当前用户和IP
 	 * </pre>
 	 *
-	 */
-/*	public void updateBy() {
+	 *//*
+*//*	public void updateBy() {
 		try {
 //			UserInfo userInfo = SecurityInfoUtil.getUserInfo();
 			this.modifierId =  -1L;
@@ -67,15 +67,15 @@ public class BaseEntity implements Serializable {
 			this.modifyTime = new Date();
 			this.modifierIp = "127.0.0.1";
 		}
-	}*/
+	}*//*
 
-	/**
+	*//**
 	 *
 	 * <pre>
 	 * 添加时设置当前用户和IP
 	 * </pre>
 	 *
-	 */
+	 *//*
 	public String getId() {
 		return id;
 	}
@@ -98,7 +98,7 @@ public class BaseEntity implements Serializable {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
-	}
+	}*/
 /*	public void addBy() {
 		try {
 //			UserInfo userInfo = SecurityInfoUtil.getUserInfo();
