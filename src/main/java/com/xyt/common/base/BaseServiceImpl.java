@@ -65,7 +65,6 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEnt
 	 * @Description: 根据实体中的属性进行查询，只能有一个返回值，有多个结果是抛出异常，查询条件使用等号
 	 */
 	public T selectOne(final T entity) {
-		entity.setValid(VALID);
 		return mapper.selectOne(entity);
 	}
 
@@ -87,7 +86,6 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEnt
 	 * @Description:根据实体中的属性值进行查询，查询条件使用等号
 	 */
 	public List<T> selectList(T entity) {
-		entity.setValid(VALID);
 		return mapper.select(entity);
 	}
 	/**
@@ -96,7 +94,6 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEnt
 	 * @Description:根据实体中的属性值进行查询，查询条件使用等号
 	 */
 	public Map<Long,T> selectMapEntity(T entity){
-		entity.setValid(VALID);
 		return mapper.selectMapEntity(entity);
 	}
 	/**
@@ -124,7 +121,6 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEnt
         }
 	    //更新字段
 	    T record = getEntityInstance();
-	    record.setValid(INVALID);
         //where 条件
         Example example = new Example(getEntityClass());
         Criteria criteria = example.createCriteria();
@@ -138,7 +134,6 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEnt
 	 * @Description:根据实体中的属性查询总数，查询条件使用等号
 	 */
 	public Long count(T entity) {
-		entity.setValid(VALID);
 		return new Long(mapper.selectCount(entity));
 	}
 
@@ -156,7 +151,6 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEnt
 	 */
 	@Transactional
 	public int save(T entity) {
-		entity.setValid(VALID);
 		//entity.addBy();
 		return mapper.insertSelective(entity);
 	}
@@ -182,7 +176,6 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEnt
 			List<T> tempList = new ArrayList<T>();
 			for (int i = 0; i < size; i++) {
 				T entity = entityList.get(i);
-				entity.setValid(VALID);
 				//entity.addBy();
 				tempList.add(entity);
 				if (i >= 1 && i % batchSize == 0) {
@@ -244,9 +237,7 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEnt
 	 */
 	@Transactional
 	protected int deleteById(T entity) {
-		entity.setValid(INVALID);
-		//entity.updateBy();
-		return mapper.updateByPrimaryKeySelective(entity);
+		return mapper.delete(entity);
 	}
 
 }
